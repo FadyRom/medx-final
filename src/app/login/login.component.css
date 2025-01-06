@@ -11,7 +11,6 @@
   position: relative;
   background-color: #87ab69;
   min-height: 50vh;
-  height: fit-content;
   width: 30vw;
   display: flex;
   flex-direction: column;
