@@ -169,6 +169,15 @@ hr {
   color: black;
 }
 
+.fe-maleDiv {
+  display: flex;
+}
+
+.fe-maleDiv input {
+  width: 14px;
+  margin: 0 5px;
+}
+
 fieldset {
   padding: 0 30px;
   border: 1px solid black;

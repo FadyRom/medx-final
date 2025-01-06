@@ -7,6 +7,7 @@
 }
 
 .loginDiv {
+  padding: 1rem;
   position: relative;
   background-color: #87ab69;
   min-height: 50vh;
@@ -14,14 +15,13 @@
   width: 30vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-radius: 30px;
+  gap: 1rem;
 }
 
 .loginDiv h2 {
-  position: absolute;
-  top: 20px;
   font-size: 3rem;
 }
 
@@ -52,11 +52,6 @@ form {
   color: black;
   font-size: larger;
   cursor: pointer;
-}
-
-h3 {
-  position: absolute;
-  bottom: 20px;
 }
 
 h3 a {
