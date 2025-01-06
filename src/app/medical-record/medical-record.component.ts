@@ -102,13 +102,17 @@ export class MedicalRecordComponent implements OnInit {
   }
 
   removeAllergy($index: number) {
-    let allergiesArray = this.medicalRecordForm.controls.allergies.value;
-    allergiesArray = allergiesArray.filter((v) => v !== allergiesArray[$index]);
-    (this.medicalRecordForm.get('allergies') as FormArray).reset();
-    (this.medicalRecordForm.get('allergies') as FormArray).patchValue(
-      allergiesArray
-    );
-    this.medicalRecordForm.controls.allergies.removeAt(-1);
+    if (this.medicalRecordForm.controls.allergies.length !== 1) {
+      let allergiesArray = this.medicalRecordForm.controls.allergies.value;
+      allergiesArray = allergiesArray.filter(
+        (v) => v !== allergiesArray[$index]
+      );
+      (this.medicalRecordForm.get('allergies') as FormArray).reset();
+      (this.medicalRecordForm.get('allergies') as FormArray).patchValue(
+        allergiesArray
+      );
+      this.medicalRecordForm.controls.allergies.removeAt(-1);
+    }
   }
 
   addMedication() {
@@ -128,13 +132,17 @@ export class MedicalRecordComponent implements OnInit {
   }
 
   removeMedication($index: number) {
-    let allergiesArray = this.medicalRecordForm.controls.medications.value;
-    allergiesArray = allergiesArray.filter((v) => v !== allergiesArray[$index]);
-    (this.medicalRecordForm.get('medications') as FormArray).reset();
-    (this.medicalRecordForm.get('medications') as FormArray).patchValue(
-      allergiesArray
-    );
-    this.medicalRecordForm.controls.medications.removeAt(-1);
+    if (this.medicalRecordForm.controls.medications.length !== 1) {
+      let allergiesArray = this.medicalRecordForm.controls.medications.value;
+      allergiesArray = allergiesArray.filter(
+        (v) => v !== allergiesArray[$index]
+      );
+      (this.medicalRecordForm.get('medications') as FormArray).reset();
+      (this.medicalRecordForm.get('medications') as FormArray).patchValue(
+        allergiesArray
+      );
+      this.medicalRecordForm.controls.medications.removeAt(-1);
+    }
   }
 
   addcondition() {
@@ -154,13 +162,17 @@ export class MedicalRecordComponent implements OnInit {
   }
 
   removecondition($index: number) {
-    let allergiesArray = this.medicalRecordForm.controls.conditions.value;
-    allergiesArray = allergiesArray.filter((v) => v !== allergiesArray[$index]);
-    (this.medicalRecordForm.get('conditions') as FormArray).reset();
-    (this.medicalRecordForm.get('conditions') as FormArray).patchValue(
-      allergiesArray
-    );
-    this.medicalRecordForm.controls.conditions.removeAt(-1);
+    if (this.medicalRecordForm.controls.conditions.length !== 1) {
+      let allergiesArray = this.medicalRecordForm.controls.conditions.value;
+      allergiesArray = allergiesArray.filter(
+        (v) => v !== allergiesArray[$index]
+      );
+      (this.medicalRecordForm.get('conditions') as FormArray).reset();
+      (this.medicalRecordForm.get('conditions') as FormArray).patchValue(
+        allergiesArray
+      );
+      this.medicalRecordForm.controls.conditions.removeAt(-1);
+    }
   }
 
   onCancel() {
@@ -186,6 +198,7 @@ export class MedicalRecordComponent implements OnInit {
     this.loading.set(true);
     if (this.medicalRecordForm.valid) {
       const photoUrl = await this.getPhotoUrl();
+
       const sub = this.mrService
         .submitMr(
           this.medicalRecordForm.controls.firstName.value,

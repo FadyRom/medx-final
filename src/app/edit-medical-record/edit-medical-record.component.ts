@@ -83,14 +83,18 @@ export class EditMedicalRecordComponent implements OnInit {
         this.phoneNumber.set(this.getMedicalRecord().phoneNo);
         this.nationalId.set(this.getMedicalRecord().nationalId);
         this.conditions.set(this.getMedicalRecord().conditions);
+
         this.medications.set(this.getMedicalRecord().medications);
+
         this.allergies.set(this.getMedicalRecord().allergies);
+
         this.substances.set(this.getMedicalRecord().substances);
       });
     this.loading.set(false);
   }
 
   addAllergy() {
+    console.log(this.allergies());
     if (this.allergies().length == 0) {
       this.allergies().push('');
     }
@@ -167,8 +171,19 @@ export class EditMedicalRecordComponent implements OnInit {
     drugs: boolean,
     myForm: HTMLFormElement
   ) {
-    this.substances.set([alcohol, smoke, drugs]);
     event.preventDefault();
+
+    this.substances.set([alcohol, smoke, drugs]);
+    if (this.allergies().length == 0) {
+      this.allergies.set(['none']);
+    }
+    if (this.medications().length == 0) {
+      this.medications.set(['none']);
+    }
+    if (this.conditions().length == 0) {
+      this.conditions.set(['none']);
+    }
+
     this.loading.set(true);
     if (
       this.firstName() != '' &&
