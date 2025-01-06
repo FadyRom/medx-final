@@ -67,6 +67,5 @@ h3 a {
 @media (max-width: 992px) {
   .loginDiv {
     width: 80vw;
-    height: 60vh;
   }
 }
