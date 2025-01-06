@@ -82,11 +82,15 @@ export class EditMedicalRecordComponent implements OnInit {
         this.date.set(this.getMedicalRecord().date);
         this.phoneNumber.set(this.getMedicalRecord().phoneNo);
         this.nationalId.set(this.getMedicalRecord().nationalId);
-        this.conditions.set(this.getMedicalRecord().conditions);
-
-        this.medications.set(this.getMedicalRecord().medications);
-
-        this.allergies.set(this.getMedicalRecord().allergies);
+        if (this.getMedicalRecord().conditions) {
+          this.conditions.set(this.getMedicalRecord().conditions);
+        }
+        if (this.getMedicalRecord().medications) {
+          this.medications.set(this.getMedicalRecord().medications);
+        }
+        if (this.getMedicalRecord().allergies) {
+          this.allergies.set(this.getMedicalRecord().allergies);
+        }
 
         this.substances.set(this.getMedicalRecord().substances);
       });
