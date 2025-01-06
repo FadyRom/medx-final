@@ -1,0 +1,119 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 span {
+  color: #87ab69;
+}
+
+#myForm {
+  background-color: #87ab69;
+  box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  width: 70vw;
+  height: fit-content;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.personalImageDiv {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  object-fit: cover;
+}
+
+.personalImage {
+  width: 150px;
+  height: 150px;
+  border: 1px black solid;
+  border-radius: 100%;
+  padding: 8px;
+  cursor: pointer;
+}
+.personalImageATag {
+  color: black;
+  cursor: pointer;
+}
+
+fieldset {
+  border: 1px black solid;
+  padding: 1rem;
+  width: 100%;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+legend {
+  color: black;
+}
+
+input {
+  background-color: #87ab69;
+  color: black;
+}
+
+input::placeholder {
+  color: black;
+}
+
+input,
+select {
+  border: none;
+  border-bottom: 1px black solid;
+  padding: 10px;
+  font-size: medium;
+  width: 50%;
+  background-color: #87ab69;
+  color: black;
+}
+
+input[type="date"],
+select {
+  cursor: pointer;
+}
+
+.submitDiv {
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.submitDiv button {
+  width: 40%;
+  border-radius: 25px;
+  border: thin;
+  padding: 10px;
+  background-color: black;
+  cursor: pointer;
+  transition: 0.4s;
+  font-size: larger;
+}
+
+a {
+  text-decoration: none;
+  color: #f6eee3;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+
+@media (max-width: 650px) {
+  #myForm {
+    width: 90vw;
+  }
+}

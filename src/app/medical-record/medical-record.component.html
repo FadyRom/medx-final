@@ -1,0 +1,257 @@
+@if (loading()) {
+<app-loading />
+}
+
+<div class="medical-record-container">
+  <form [formGroup]="medicalRecordForm" (ngSubmit)="onSubmit()">
+    <div style="text-align: center">
+      <h2>Medical Record</h2>
+      <p>
+        Please fill this form so we could be able to make your medical record
+      </p>
+    </div>
+
+    <fieldset>
+      <legend>Personal Information</legend>
+      <div>
+        <div class="control-row">
+          <div class="control">
+            <label for="first-name">First Name</label>
+            <input
+              type="text"
+              id="first-name"
+              name="first-name"
+              formControlName="firstName"
+            />
+          </div>
+
+          <div class="control">
+            <label for="last-name">Last Name</label>
+            <input
+              type="text"
+              id="last-name"
+              name="last-name"
+              formControlName="lastName"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="control-row">
+        <div class="control">
+          <label for="age">birth date</label>
+          <input type="date" id="age" name="age" formControlName="date" />
+        </div>
+        <div class="control">
+          <label for="national-id">national id</label>
+          <input
+            type="number"
+            id="national-id"
+            name="national-id"
+            formControlName="nationalId"
+          />
+        </div>
+      </div>
+      <div class="control-row">
+        <div class="control">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone-number"
+            name="phone-number"
+            formControlName="phoneNumber"
+          />
+
+          <label>What is your gender?</label>
+          <div style="display: inline-flex; width: fit-content">
+            <input
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+              formControlName="gender"
+            />
+            <label for="male" style="margin-right: 1rem">Male</label>
+
+            <input
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+              formControlName="gender"
+            />
+            <label for="female">Female</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <hr />
+    <fieldset>
+      <legend>Medical Information</legend>
+      <div class="control-row">
+        <div class="control">
+          <label for="conditions"
+            >conditions that might apply to you or to any of your
+            relatives</label
+          >
+          <div formArrayName="conditions">
+            <div class="control medicalField">
+              @for (condition of medicalRecordForm.controls.conditions.controls;
+              track $index) {
+              <div class="inputMedicalControl">
+                <input
+                  type="text"
+                  id="conditions"
+                  name="conditions"
+                  placeholder="Conditions"
+                  [formControlName]="$index"
+                />
+                <button type="button" class="removeButton">
+                  <i
+                    style="font-size: 1.3rem; padding-top: 3px"
+                    class="fa-solid fa-trash"
+                    (click)="removecondition($index)"
+                  ></i>
+                </button>
+              </div>
+              }
+              <button
+                type="button"
+                type="button"
+                class="addFieldButton"
+                (click)="addcondition()"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <label for="medications">medications</label>
+          <div formArrayName="medications">
+            <div class="control medicalField">
+              @for (medication of
+              medicalRecordForm.controls.medications.controls; track $index) {
+              <div class="inputMedicalControl">
+                <input
+                  type="text"
+                  class="inputMedical"
+                  id="medications"
+                  name="medications"
+                  placeholder="medications"
+                  [formControlName]="$index"
+                />
+                <button type="button" class="removeButton">
+                  <i
+                    style="font-size: 1.3rem; padding-top: 3px"
+                    class="fa-solid fa-trash"
+                    (click)="removeMedication($index)"
+                  ></i>
+                </button>
+              </div>
+              }
+              <button
+                type="button"
+                type="button"
+                class="addFieldButton"
+                (click)="addMedication()"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <label for="allergies">allergies</label>
+          <div formArrayName="allergies">
+            <div class="control medicalField">
+              @for (allergy of medicalRecordForm.controls.allergies.controls;
+              track $index) {
+              <div class="inputMedicalControl">
+                <input
+                  class="inputMedical"
+                  type="text"
+                  id="allergies"
+                  name="allergies"
+                  placeholder="allergies"
+                  [formControlName]="$index"
+                />
+                <button type="button" class="removeButton">
+                  <i
+                    class="fa-solid fa-trash"
+                    style="font-size: 1.3rem; padding-top: 3px"
+                    (click)="removeAllergy($index)"
+                  ></i>
+                </button>
+              </div>
+              }
+              <button
+                type="button"
+                type="button"
+                (click)="addAllergy()"
+                class="addFieldButton"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <hr />
+
+    <fieldset formArrayName="substances">
+      <legend>Health</legend>
+      <h4>do you consume any of these things:</h4>
+      <div class="control">
+        <input
+          type="checkbox"
+          id="alcohol"
+          name="substances"
+          value="alcohol"
+          formControlName="0"
+        />
+        <label for="alcohol">alcohol</label>
+      </div>
+
+      <div class="control">
+        <input
+          type="checkbox"
+          id="smoke"
+          name="substances"
+          value="smoke"
+          formControlName="1"
+        />
+        <label for="smoke">smoke</label>
+      </div>
+
+      <div class="control">
+        <input
+          type="checkbox"
+          id="drugs"
+          name="substances"
+          value="drugs"
+          formControlName="2"
+        />
+        <label for="drugs">drugs</label>
+      </div>
+    </fieldset>
+
+    <hr />
+
+    <div class="form-actions">
+      <p>
+        <button type="submit" class="button">Submit</button>
+      </p>
+      <p>
+        <button
+          type="button"
+          class="button"
+          style="background-color: red; max-width: 10rem"
+          (click)="onCancel()"
+        >
+          Cancel
+        </button>
+      </p>
+      <p style="color: red">{{ invalidForm() }}</p>
+    </div>
+  </form>
+</div>

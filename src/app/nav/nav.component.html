@@ -1,0 +1,30 @@
+<nav class="navContainer">
+  <ul class="ulNav">
+    <li>
+      <img src="/medxLogo.png" alt="MEDX" id="medxLogo" routerLink="/home" />
+    </li>
+    <li>
+      <input
+        type="text"
+        name="search"
+        id="search"
+        placeholder="Search By ID..."
+        #search
+        (keydown.enter)="searchProfile(search.value)"
+      />
+    </li>
+    <li class="matIcon">
+      <i class="fas fa-bars hamburger" (click)="showSelectedNav()"></i>
+    </li>
+  </ul>
+  @if (showNav()) {
+  <ul class="selectedNav">
+    <li class="links" (click)="medicalRecord()">Medical Record</li>
+
+    <li class="links" routerLink="/home" routerLinkActive="selectedRoute">
+      Home
+    </li>
+    <li class="links" (click)="logout()">Logout</li>
+  </ul>
+  }
+</nav>

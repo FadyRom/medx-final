@@ -1,0 +1,32 @@
+@if (loading()) {
+<app-loading />
+}
+
+<div class="loginContainer">
+  <div class="loginDiv">
+    <h2>Login</h2>
+    <form (ngSubmit)="login(email.value, password.value, $event)">
+      <input
+        type="email"
+        name="login"
+        class="loginInputs"
+        placeholder="Email"
+        #email
+      />
+      <input
+        type="password"
+        name="password"
+        class="loginInputs"
+        placeholder="Password"
+        #password
+      />
+
+      <button class="submitButton">Submit</button>
+    </form>
+    <h3>Don't have an account? <a routerLink="/signup">Signup</a></h3>
+
+    @if(wrongInputs()){
+    <p class="wrongInputs">Email or Password is incorrect</p>
+    }
+  </div>
+</div>

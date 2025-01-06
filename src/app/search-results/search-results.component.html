@@ -1,0 +1,64 @@
+@if (loading()) {
+<app-loading />
+}
+
+<div class="medicalRecordResponseContainer">
+  <div class="medicalRecordResponseInnerContainer">
+    <div [routerLink]="['/edit-medical-record/', searchTerm()]" class="edit">
+      <i class="fas fa-edit"></i> <span> Edit</span>
+    </div>
+    <div class="userNameImageDiv">
+      <img [src]="users().photoUrl" class="userImage" />
+
+      <div>
+        <h1 id="fullName">{{ users().fullName.toUpperCase() }}</h1>
+        <h2 class="userId">
+          ID: <span>{{ loggedInUser() }}</span>
+        </h2>
+      </div>
+    </div>
+    <hr />
+    <h2>Personal Information:</h2>
+    <div class="medicalRecordPersonalInfo">
+      <h3>
+        Phone Number: <span>{{ users().phoneNo }}</span>
+      </h3>
+      <h3>
+        Birth Date: <span>{{ users().date | date }}</span>
+      </h3>
+      <h3>
+        Gender: <span>{{ users().gender.toUpperCase() }}</span>
+      </h3>
+      <h3>
+        National Id: <span>{{ users().nationalId }}</span>
+      </h3>
+    </div>
+    <hr />
+    <h2>Medical Information:</h2>
+    <div class="medicalRecordPersonalInfo2">
+      <h3>
+        Conditions: <span>{{ users().conditions }}</span>
+      </h3>
+      <h3>
+        Medications: <span>{{ users().medications }}</span>
+      </h3>
+      <h3>
+        Allergies: <span>{{ users().allergies }}</span>
+      </h3>
+    </div>
+    <hr />
+    <h2>Health:</h2>
+    <div class="medicalRecordPersonalInfo2">
+      <h3>
+        Alcohol: <span>{{ users().substances[0] }}</span>
+      </h3>
+      <h3>
+        Smoke: <span>{{ users().substances[1] }}</span>
+      </h3>
+      <h3>
+        Drugs: <span>{{ users().substances[2] }}</span>
+      </h3>
+    </div>
+    <hr />
+  </div>
+</div>

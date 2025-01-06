@@ -1,0 +1,104 @@
+<div class="container">
+  <!-- <img src="/medxLogo.png" alt="medxLogo" id="medxLogo" /> -->
+  <h1>Signup to <span>MEDX</span></h1>
+  <form [formGroup]="myForm" id="myForm" (ngSubmit)="onSignupSubmit()">
+    <div class="personalImageDiv">
+      <img
+        [src]="photoUrl() ?? '/image-placeholder.jpg'"
+        alt="personal image"
+        class="personalImage"
+        (click)="inputField.click()"
+      />
+      <p (click)="inputField.click()" class="personalImageATag">
+        Upload personal image
+      </p>
+      <input
+        #inputField
+        type="file"
+        accept=".jpg, .jpeg, .png"
+        hidden
+        formControlName="personalImage"
+        (change)="uploadImage($event)"
+      />
+    </div>
+    <div>
+      <fieldset class="topFieldset">
+        <legend>Account</legend>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          formControlName="email"
+        />
+        <input
+          type="userName"
+          name="userName"
+          id="userName"
+          placeholder="Username"
+          formControlName="userName"
+        />
+        <input
+          type="password"
+          name="Password"
+          id="Password"
+          placeholder="Password"
+          formControlName="password"
+        />
+
+        <input
+          type="password"
+          name="confirmPassword"
+          id="confirmPassword"
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+        />
+      </fieldset>
+      <fieldset class="bottomFieldset">
+        <legend>Personal Information</legend>
+        <div>
+          <label for="birthDate">Birth Date: </label><br />
+
+          <input
+            type="date"
+            name="birthDate"
+            id="birthDate"
+            formControlName="birthDate"
+          />
+        </div>
+        <input
+          type="tel"
+          name="phoneNo"
+          id="phoneNo"
+          placeholder="Phone Number"
+          formControlName="phoneNo"
+        />
+        <input
+          type="text"
+          name="location"
+          id="location"
+          placeholder="location"
+          formControlName="location"
+        />
+        <div>
+          <label for="gender">Gender: </label><br />
+
+          <select name="gender" id="gender" formControlName="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+      </fieldset>
+      <div class="submitDiv">
+        <button>Submit</button>
+        <p>Already have and account? <a routerLink="../">Login</a></p>
+        @if (notValid()) {
+        <p class="error">{{ notValid() }}</p>
+        }
+      </div>
+    </div>
+  </form>
+</div>
+@if (loading()) {
+<app-loading />
+}
