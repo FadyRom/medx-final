@@ -20,3 +20,9 @@ export interface SEARCH_RESPONSE {
   uId: string;
   username: string;
 }
+
+export interface userReadings {
+  ecg: string;
+  hrate: string;
+  temp: string;
+}

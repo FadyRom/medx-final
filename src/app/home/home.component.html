@@ -2,15 +2,16 @@
   <div class="userContainer">
     <h2>Device 1</h2>
     <div class="responseDataDiv">
-      <h3 class="responses">HR: <span class="responsesSpan">...</span></h3>
-      <h3 class="responses">SpO2: <span class="responsesSpan">...</span></h3>
-      <h3 class="responses">ECG: <span class="responsesSpan">...</span></h3>
-      <h3 class="responses">PR Wave: <span class="responsesSpan">...</span></h3>
       <h3 class="responses">
-        PR Segment: <span class="responsesSpan">...</span>
+        Heart Rate:
+        <span class="responsesSpan">{{ userReadings().hrate }}</span>
       </h3>
       <h3 class="responses">
-        Temperature: <span class="responsesSpan">...</span>
+        ECG: <span class="responsesSpan">{{ userReadings().ecg }}</span>
+      </h3>
+      <h3 class="responses">
+        Temperature:
+        <span class="responsesSpan">{{ userReadings().temp }}</span>
       </h3>
     </div>
   </div>

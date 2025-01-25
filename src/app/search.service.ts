@@ -17,4 +17,12 @@ export class SearchService {
       )
     );
   }
+
+  async getPatientData() {
+    return lastValueFrom(
+      this.httpClient.get(
+        `https://medx-final-default-rtdb.firebaseio.com/readings.json`
+      )
+    );
+  }
 }
