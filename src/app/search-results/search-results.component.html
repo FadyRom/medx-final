@@ -1,6 +1,6 @@
 @if (loading()) {
 <app-loading />
-}
+} @if (users()) {
 
 <div class="medicalRecordResponseContainer">
   <div class="medicalRecordResponseInnerContainer">
@@ -62,3 +62,6 @@
     <hr />
   </div>
 </div>
+}@else {
+<h2 style="text-align: center; margin-top: 1rem">No Users Found</h2>
+}
