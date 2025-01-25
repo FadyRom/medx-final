@@ -10,9 +10,21 @@
         ECG: <span class="responsesSpan">{{ userReadings().ecg }}</span>
       </h3>
       <h3 class="responses">
+        SPO2: <span class="responsesSpan">{{ userReadings().SPO2 }}</span>
+      </h3>
+      @if (+userReadings().temp <0) {
+
+      <h3 class="responses">
+        Temperature:
+        <span class="responsesSpan">No Readings</span>
+      </h3>
+
+      }@else {
+      <h3 class="responses">
         Temperature:
         <span class="responsesSpan">{{ userReadings().temp }}</span>
       </h3>
+      }
     </div>
   </div>
 </div>

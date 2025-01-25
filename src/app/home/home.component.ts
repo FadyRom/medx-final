@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
     ecg: '',
     hrate: '',
     temp: '',
+    SPO2: '',
   });
 
   ngOnInit(): void {

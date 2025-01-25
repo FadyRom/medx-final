@@ -25,4 +25,5 @@ export interface userReadings {
   ecg: string;
   hrate: string;
   temp: string;
+  SPO2: string;
 }
